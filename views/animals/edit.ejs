@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Edit Animal</title>
+  </head>
+  <body>
+    <h1>Edit the animal</h1>
+    <form action="/animals/<%=animal._id%>?_method=PUT" method="post"> <!-- Changed method to POST with method override -->
+      <label for="name">Animal name</label>
+      <input
+        type="text"
+        name="name"
+        placeholder="animal name"
+        id="name"
+        value="<%=animal.name%>"
+      /><br />
+
+      <label for="type">Animal Type</label>
+      <select name="type" id="type">
+        <option value="dog" <%= animal.type === 'dog' ? 'selected' : '' %>>Dog</option>
+        <option value="cat" <%= animal.type === 'cat' ? 'selected' : '' %>>Cat</option>
+        <option value="rabbit" <%= animal.type === 'rabbit' ? 'selected' : '' %>>Rabbit</option>
+        <option value="bird" <%= animal.type === 'bird' ? 'selected' : '' %>>Bird</option>
+        <option value="reptile" <%= animal.type === 'reptile' ? 'selected' : '' %>>Reptile</option>
+        <option value="other" <%= animal.type === 'other' ? 'selected' : '' %>>Other</option>
+      </select><br />
+
+      <label for="breed">Animal breed</label>
+      <input
+        type="text"
+        name="breed"
+        id="breed"
+        value="<%=animal.breed %>"
+      /><br />
+
+      <label for="gender">Animal gender</label>
+      <select name="gender" id="gender">
+        <option value="female" <%= animal.gender === 'female' ? 'selected' : '' %>>Female</option>
+        <option value="male" <%= animal.gender === 'male' ? 'selected' : '' %>>Male</option>
+      </select><br />
+
+      <label for="age">Aminal age</label>
+      <input type="number" name="age" id="age" value="<%=animal.age%>" /><br />
+
+      <label for="health">Animal health</label>
+      <select name="health" id="health">
+        <option value="true" <%= animal.health === true ? 'selected' : '' %>>Healthy</option>
+        <option value="false" <%= animal.health === false ? 'selected' : '' %>>Unhealthy</option>
+      </select><br />
+
+      <label for="adoptionStatus">Adoption Status</label>
+      <select name="adoptionStatus" id="adoptionStatus">
+        <option value="available" <%= animal.adoptionStatus === 'available' ? 'selected' : '' %>>Available</option>
+        <option value="adopted" <%= animal.adoptionStatus === 'adopted' ? 'selected' : '' %>>Adopted</option>
+        <option value="pending" <%= animal.adoptionStatus === 'pending' ? 'selected' : '' %>>Pending</option>
+      </select><br />
+      
+      <button>Submit</button>
+    </form>
+
+    <a href="/animals/<%=animal._id%>">Cancel</a>
+  </body>
+</html>
